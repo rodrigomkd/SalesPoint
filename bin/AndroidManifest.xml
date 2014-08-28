@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.salespoint"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity_Clientes"
+            android:label="@string/title_activity_main_activity__clientes" >
+        </activity>
+        <activity
+            android:name=".Alta_cliente"
+            android:label="@string/title_activity_alta_cliente" >
+        </activity>
+        <activity
+            android:name=".Detalle_cliente"
+            android:label="@string/title_activity_detalle_cliente" >
+        </activity>
+        <activity
+            android:name=".MainActivity_Productos"
+            android:label="@string/title_activity_main_activity__productos" >
+        </activity>
+        <activity
+            android:name=".Update_Producto"
+            android:label="@string/title_activity_update__producto" >
+        </activity>
+        <activity
+            android:name=".Detalle_Producto"
+            android:label="@string/title_activity_detalle__producto" >
+        </activity>
+        <activity
+            android:name=".Rutas"
+            android:label="@string/title_activity_rutas" >
+        </activity>
+        <activity
+            android:name=".Update_Ruta"
+            android:label="@string/title_activity_update__ruta" >
+        </activity>
+        <activity
+            android:name=".Detalle_Ruta"
+            android:label="@string/title_activity_detalle__ruta" >
+        </activity>
+        <activity
+            android:name=".Vendedores"
+            android:label="@string/title_activity_vendedores" >
+        </activity>
+        <activity
+            android:name=".Update_Vendedores"
+            android:label="@string/title_activity_update__vendedores" >
+        </activity>
+        <activity
+            android:name=".Detalle_Vendedor"
+            android:label="@string/title_activity_detalle__vendedor" >
+        </activity>
+        <activity
+            android:name=".Seleccionar_Ruta"
+            android:label="@string/title_activity_seleccionar__ruta" >
+        </activity>
+        <activity
+            android:name=".Agregar_Ruta_Vendedor"
+            android:label="@string/title_activity_agregar__ruta__vendedor" >
+        </activity>
+        <activity
+            android:name=".Rutas_Cliente"
+            android:label="@string/title_activity_rutas__cliente" >
+        </activity>
+        <activity
+            android:name=".Agregar_Ruta_Cliente"
+            android:label="@string/title_activity_agregar__ruta__cliente" >
+        </activity>
+        <activity
+            android:name=".Select_Vendedor_Venta"
+            android:label="@string/title_activity_select__vendedor__venta" >
+        </activity>
+        <activity
+            android:name=".Select_Ruta_Venta"
+            android:label="@string/title_activity_select__ruta__venta" >
+        </activity>
+        <activity
+            android:name=".Select_Cliente_Venta"
+            android:label="@string/title_activity_select__cliente__venta" >
+        </activity>
+        <activity
+            android:name=".Carrito_Venta"
+            android:label="@string/title_activity_carrito__venta" >
+        </activity>
+        <activity
+            android:name=".Select_Producto_Venta"
+            android:label="@string/title_activity_select__producto__venta" >
+        </activity>
+        <activity
+            android:name=".Select_Cantidad_Venta"
+            android:label="@string/title_activity_select__cantidad__venta" >
+        </activity>
+        <activity
+            android:name=".Mis_Ventas"
+            android:label="@string/title_activity_mis__ventas" >
+        </activity>
+        <activity
+            android:name=".Detalle_Venta"
+            android:label="@string/title_activity_detalle__venta" >
+        </activity>
+        <activity
+            android:name=".Productos_Detalle_Venta"
+            android:label="@string/title_activity_productos__detalle__venta" >
+        </activity>
+        <activity
+            android:name=".Detalle_Producto_Venta"
+            android:label="@string/title_activity_detalle__producto__venta" >
+        </activity>
+        <activity
+            android:name=".Ventas"
+            android:label="@string/title_activity_ventas" >
+        </activity>
+    </application>
+
+</manifest>
