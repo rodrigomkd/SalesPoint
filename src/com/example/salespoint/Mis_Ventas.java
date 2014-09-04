@@ -5,6 +5,8 @@ import java.util.List;
 import com.example.entidades.Venta;
 import com.example.metodos.Metodos;
 import com.example.sql.SQLiteQuery;
+
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -50,6 +52,10 @@ public class Mis_Ventas extends Activity {
 		                listView.setAdapter(adapter);
 		                listView.setAdapter(adapter);
 		                
+		                ActionBar actionBar = getActionBar();
+			   	        actionBar.setDisplayHomeAsUpEnabled(true);
+			   	        actionBar.setHomeButtonEnabled(true);
+			   	        
 		                listView.setOnItemClickListener(new OnItemClickListener(){
 		        	        public void onItemClick(AdapterView<?> parent, View view, int position,long id) {   	
 		        	        		Intent intent = new Intent(Mis_Ventas.this,Detalle_Venta.class);
@@ -75,6 +81,10 @@ public class Mis_Ventas extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		 switch (item.getItemId()) {
+		 case android.R.id.home:
+		 		Intent intentVentas = new Intent(Mis_Ventas.this,Ventas.class);          	
+		 		startActivity(intentVentas);
+		 	return true;
 	        case MENU1:
 	        	Intent intent = new Intent(Mis_Ventas.this,Select_Ruta_Venta.class);
 	        	intent.putExtra("idvendedor",""+idvendedor);

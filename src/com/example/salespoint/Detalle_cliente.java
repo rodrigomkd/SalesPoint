@@ -4,6 +4,7 @@ package com.example.salespoint;
 import com.example.entidades.cliente;
 import com.example.sql.SQLiteQuery;
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -35,6 +36,7 @@ public class Detalle_cliente extends Activity {
 		setContentView(R.layout.activity_detalle_cliente);
 	   Bundle reicieveParams = getIntent().getExtras();
 	    idcliente = Integer.parseInt(reicieveParams.getString("idcliente").trim());
+	    
 		txtIdcliente = (TextView) findViewById(R.id.textView2);
 		txtNombre = (TextView) findViewById(R.id.textView4);
 		txtApepat = (TextView) findViewById(R.id.textView6);
@@ -63,6 +65,10 @@ public class Detalle_cliente extends Activity {
 		txtFechanac.setText(c.getFecnac());
 		txtCelular.setText(c.getCelular());
 		txtEmail.setText(c.getEmail());			
+		
+		ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
 	}
 
 	@Override
@@ -83,10 +89,15 @@ public class Detalle_cliente extends Activity {
 	@Override
     public boolean onOptionsItemSelected(MenuItem item) {
 		 switch (item.getItemId()) {
+		 case android.R.id.home:
+		 		Intent intentHome = new Intent(Detalle_cliente.this,MainActivity_Clientes.class);
+		 		startActivity(intentHome);
+		 		return true;
 	        case MENU1:
 	        	//modificar cliente
 	        	Intent intent = new Intent(Detalle_cliente.this,Alta_cliente.class);
 	        	intent.putExtra("idcliente",""+idcliente);
+	        	intent.putExtra("activity", "Detalle_cliente");
 	    		startActivity(intent);   
 	            return true;
 	        case MENU2:

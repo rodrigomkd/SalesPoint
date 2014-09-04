@@ -4,9 +4,11 @@ import com.example.entidades.Producto;
 import com.example.sql.SQLiteQuery;
 
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +22,8 @@ public class Update_Producto extends Activity {
 	private EditText txtPcompra;
 	private EditText txtCantidad;
 	private int idproducto;
+	private String activity;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,6 +38,7 @@ public class Update_Producto extends Activity {
 		txtCantidad = (EditText) findViewById(R.id.editText5);
 		Bundle reicieveParams = getIntent().getExtras();
 		idproducto = Integer.parseInt(reicieveParams.getString("idproducto").trim());
+		activity = reicieveParams.getString("activity");
 		 if(idproducto != 0){
 			 SQLiteQuery sql = new SQLiteQuery(this);
 			 Producto p = sql.getProductoPorId(idproducto);
@@ -43,13 +48,33 @@ public class Update_Producto extends Activity {
 				txtPventa.setText(""+p.getPventa());
 				txtCantidad.setText(""+p.getCantidad());	 
 		 }
+		 
+		 ActionBar actionBar = getActionBar();
+	        actionBar.setDisplayHomeAsUpEnabled(true);
+	        actionBar.setHomeButtonEnabled(true);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.update__producto, menu);
 		return true;
+	}
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+		 switch (item.getItemId()) {
+		 case android.R.id.home:
+			Intent intentHome;
+			try {
+				intentHome = new Intent(Update_Producto.this,Class.forName("com.example.salespoint."+activity));
+				intentHome.putExtra("idproducto", ""+idproducto);
+		 		startActivity(intentHome);
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}		 		
+		 		return true;
+		 default:
+			 return super.onOptionsItemSelected(item);
+		 }
 	}
 	
 	public void onClickButton(View view){

@@ -6,6 +6,7 @@ import java.util.List;
 import com.example.entidades.Vendedor;
 import com.example.sql.SQLiteQuery;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -44,6 +45,10 @@ public class Select_Vendedor_Venta extends Activity {
 		                listView.setAdapter(adapter);
 		}
 	
+		 ActionBar actionBar = getActionBar();
+	        actionBar.setDisplayHomeAsUpEnabled(true);
+	        actionBar.setHomeButtonEnabled(true);
+	        
 		listView.setOnItemClickListener(new OnItemClickListener(){
 	        public void onItemClick(AdapterView<?> parent, View view, int position,long id) {   	
 	        		Intent intent = new Intent(Select_Vendedor_Venta.this,Select_Ruta_Venta.class);
@@ -60,6 +65,13 @@ public class Select_Vendedor_Venta extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		return super.onOptionsItemSelected(item);
+		 switch (item.getItemId()) {
+		 case android.R.id.home:
+		 		Intent intentHome = new Intent(Select_Vendedor_Venta.this,MainActivity.class);
+		 		startActivity(intentHome);
+		 		return true;
+		 default: 
+			 return super.onOptionsItemSelected(item);
+		 }
 	}
 }

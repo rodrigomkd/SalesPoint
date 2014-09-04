@@ -9,6 +9,7 @@ import com.example.entidades.Detalleventa;
 import com.example.entidades.Producto;
 import com.example.sql.SQLiteQuery;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -75,6 +76,10 @@ public class Select_Cantidad_Venta extends Activity {
 		  txtDescripcion.setText(p.getDescripcion());
 		  txtPrecio.setText(""+p.getPventa());
 		  txtCantidadDisponible.setText(""+p.getCantidad());
+		  
+		  ActionBar actionBar = getActionBar();
+	        actionBar.setDisplayHomeAsUpEnabled(true);
+	        actionBar.setHomeButtonEnabled(true);
 	}
 
 	public void aceptarButton(View view){
@@ -120,6 +125,18 @@ public class Select_Cantidad_Venta extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		return super.onOptionsItemSelected(item);
+		 switch (item.getItemId()) {
+		 	case android.R.id.home:
+		 		Intent intent = new Intent(Select_Cantidad_Venta.this,Select_Producto_Venta.class);
+             	intent.putExtra("idvendedor", ""+idvendedor);	
+             	intent.putExtra("idruta", ""+idruta);	
+             	intent.putExtra("idcliente", ""+idcliente);	
+             	intent.putExtra("detalleventas",(Serializable) detalleventas);
+		 		startActivity(intent);
+		 	return true;
+		 	default:
+		 			return super.onOptionsItemSelected(item);
+		 }
 	}
+	
 }

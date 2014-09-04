@@ -4,6 +4,7 @@ import com.example.entidades.Ruta;
 import com.example.sql.SQLiteQuery;
 
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -49,6 +50,10 @@ public class Detalle_Ruta extends Activity {
 			    txtEstado.setText(r.getEstado());
 			    txtMunicipio.setText(r.getMunicipio());
 			    txtCiudad.setText(r.getCiudad());
+			    
+			    ActionBar actionBar = getActionBar();
+		        actionBar.setDisplayHomeAsUpEnabled(true);
+		        actionBar.setHomeButtonEnabled(true);
 	}
 
 	@Override
@@ -65,6 +70,10 @@ public class Detalle_Ruta extends Activity {
 	@Override
     public boolean onOptionsItemSelected(MenuItem item) {
 		 switch (item.getItemId()) {
+			 case android.R.id.home:
+			 		Intent intentHome = new Intent(Detalle_Ruta.this,Rutas.class);
+			 		startActivity(intentHome);
+			 		return true;
 	        case MENU1:
 	        	Intent intent = new Intent(Detalle_Ruta.this,Update_Ruta.class);
 	        	intent.putExtra("idruta",""+idruta);

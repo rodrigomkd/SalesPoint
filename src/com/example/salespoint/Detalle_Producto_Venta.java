@@ -4,6 +4,7 @@ import com.example.entidades.Detalleventa;
 import com.example.entidades.Producto;
 import com.example.sql.SQLiteQuery;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -73,6 +74,10 @@ public class Detalle_Producto_Venta extends Activity {
 		  tvSubtotal.setText(""+subtotal);
 		  tvIva.setText(""+(subtotal*0.16));
 		  tvTotal.setText(""+(subtotal*1.16));
+		  
+		  ActionBar actionBar = getActionBar();
+	        actionBar.setDisplayHomeAsUpEnabled(true);
+	        actionBar.setHomeButtonEnabled(true);
 
 	}
 
@@ -97,6 +102,12 @@ public class Detalle_Producto_Venta extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		 switch (item.getItemId()) {
+		 case android.R.id.home:
+		 		Intent intentVentas = new Intent(Detalle_Producto_Venta.this,Productos_Detalle_Venta.class);          
+		 		intentVentas.putExtra("idvendedor",""+idvendedor);
+		 		intentVentas.putExtra("idventa",""+idventa);
+		 		startActivity(intentVentas);
+		 	return true;
 	        case MENU1:
 	        	Intent intent = new Intent(Detalle_Producto_Venta.this,Detalle_Venta.class);
 	        	intent.putExtra("idvendedor",""+idvendedor);

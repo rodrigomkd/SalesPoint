@@ -3,9 +3,32 @@
     <issue id="InflateParams">
         <ignore path="src/com/example/metodos/ListArrayAdapter.java" />
         <ignore path="src/com/example/metodos/ListArrayAdapterCantidad.java" />
+        <ignore path="src/com/example/metodos/ListArrayAdapterMenu.java" />
         <ignore path="src/com/example/salespoint/Agregar_Ruta_Vendedor.java" />
     </issue>
     <issue id="NewApi">
+        <ignore path="src/com/example/salespoint/Agregar_Ruta_Cliente.java" />
+        <ignore path="src/com/example/salespoint/Alta_cliente.java" />
+        <ignore path="src/com/example/salespoint/Detalle_Producto.java" />
+        <ignore path="src/com/example/salespoint/Detalle_Producto_Venta.java" />
+        <ignore path="src/com/example/salespoint/Detalle_Ruta.java" />
+        <ignore path="src/com/example/salespoint/Detalle_Venta.java" />
+        <ignore path="src/com/example/salespoint/Detalle_cliente.java" />
         <ignore path="src/com/example/salespoint/MainActivity_Clientes.java" />
+        <ignore path="src/com/example/salespoint/MainActivity_Productos.java" />
+        <ignore path="src/com/example/salespoint/Mis_Ventas.java" />
+        <ignore path="src/com/example/salespoint/Productos_Detalle_Venta.java" />
+        <ignore path="src/com/example/salespoint/Rutas.java" />
+        <ignore path="src/com/example/salespoint/Rutas_Cliente.java" />
+        <ignore path="src/com/example/salespoint/Select_Cantidad_Venta.java" />
+        <ignore path="src/com/example/salespoint/Select_Cliente_Venta.java" />
+        <ignore path="src/com/example/salespoint/Select_Producto_Venta.java" />
+        <ignore path="src/com/example/salespoint/Select_Ruta_Venta.java" />
+        <ignore path="src/com/example/salespoint/Select_Vendedor_Venta.java" />
+        <ignore path="src/com/example/salespoint/Update_Producto.java" />
+        <ignore path="src/com/example/salespoint/Update_Ruta.java" />
+        <ignore path="src/com/example/salespoint/Update_Vendedores.java" />
+        <ignore path="src/com/example/salespoint/Vendedores.java" />
+        <ignore path="src/com/example/salespoint/Ventas.java" />
     </issue>
 </lint>

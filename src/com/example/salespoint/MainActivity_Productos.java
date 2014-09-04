@@ -7,6 +7,7 @@ import com.example.entidades.Producto;
 import com.example.sql.SQLiteQuery;
 
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
@@ -44,6 +45,10 @@ public class MainActivity_Productos extends Activity {
 					   android.R.layout.simple_list_item_1, items);
 		                listView.setAdapter(adapter);
 		                listView.setAdapter(adapter);
+		                
+		                ActionBar actionBar = getActionBar();
+		    	        actionBar.setDisplayHomeAsUpEnabled(true);
+		    	        actionBar.setHomeButtonEnabled(true);
 		}
 
 		
@@ -51,6 +56,7 @@ public class MainActivity_Productos extends Activity {
 	        public void onItemClick(AdapterView<?> parent, View view, int position,long id) {   	
 	        		Intent intent = new Intent(MainActivity_Productos.this,Detalle_Producto.class);
 	        		intent.putExtra("idproducto", ""+ids.get(position));
+	        		intent.putExtra("activity", "MainActivity_Productos");
 	        		startActivity(intent);   		
 	        }
 	    });
@@ -58,8 +64,6 @@ public class MainActivity_Productos extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-	//	getMenuInflater().inflate(R.menu.main_activity__productos, menu);
 		MenuItem menu3 = menu.add(Menu.NONE, MENU1, 3, "Alta Producto");
         menu3.setAlphabeticShortcut('c');
         MenuItem menuPrincipal = menu.add(Menu.NONE, MENU2, 3, "Menú");
@@ -70,6 +74,10 @@ public class MainActivity_Productos extends Activity {
 	@Override
     public boolean onOptionsItemSelected(MenuItem item) {
 		 switch (item.getItemId()) {
+			 case android.R.id.home:
+			 		Intent intentHome = new Intent(MainActivity_Productos.this,MainActivity.class);
+			 		startActivity(intentHome);
+			 		return true;
 	        case MENU1:
 	        	Intent intent = new Intent(MainActivity_Productos.this,Update_Producto.class);
 	        	intent.putExtra("idproducto","0");

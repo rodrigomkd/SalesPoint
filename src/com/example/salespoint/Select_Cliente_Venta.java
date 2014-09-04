@@ -9,10 +9,10 @@ import com.example.entidades.Producto;
 import com.example.entidades.cliente;
 import com.example.sql.SQLiteQuery;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,8 +41,6 @@ public class Select_Cliente_Venta extends Activity {
 			   idvendedor = Integer.parseInt(reicieveParams.getString("idvendedor"));
 			   idruta = Integer.parseInt(reicieveParams.getString("idruta"));
 		  }
-		 Log.i("idvendedor", ""+idvendedor);
-		 Log.i("idruta", ""+idruta);
 		SQLiteQuery sql = new SQLiteQuery(this);
 		List<String> items = new ArrayList<String>();
 		List<cliente> clientes = sql.getClientesPorIdRuta(idruta);
@@ -70,6 +68,10 @@ public class Select_Cliente_Venta extends Activity {
 			    		}	
 		}
 		
+		ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+        
 		listView.setOnItemClickListener(new OnItemClickListener(){
 	        public void onItemClick(AdapterView<?> parent, View view, int position,long id) {  	        	
 	        		Intent intent = new Intent(Select_Cliente_Venta.this,Select_Producto_Venta.class);
@@ -90,6 +92,14 @@ public class Select_Cliente_Venta extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		return super.onOptionsItemSelected(item);
+		 switch (item.getItemId()) {
+		 case android.R.id.home:
+		 		Intent intentHome = new Intent(Select_Cliente_Venta.this,Select_Ruta_Venta.class);
+		 		intentHome.putExtra("idvendedor", ""+idvendedor);
+		 		startActivity(intentHome);
+		 		return true;
+		 default: 
+			 return super.onOptionsItemSelected(item);
+		 }
 	}
 }

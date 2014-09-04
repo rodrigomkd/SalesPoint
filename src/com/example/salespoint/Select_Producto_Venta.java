@@ -11,6 +11,7 @@ import com.example.entidades.Venta;
 import com.example.metodos.ListArrayAdapterCantidad;
 import com.example.sql.SQLiteQuery;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -58,6 +59,10 @@ public class Select_Producto_Venta extends Activity {
 		 ArrayAdapter<Detalleventa> adapter = new ListArrayAdapterCantidad(this,detalleventas,productos);
 		 listView.setAdapter(adapter);
 		 
+		 ActionBar actionBar = getActionBar();
+	        actionBar.setDisplayHomeAsUpEnabled(true);
+	        actionBar.setHomeButtonEnabled(true);
+	        
 		 listView.setOnItemClickListener(new OnItemClickListener(){
 		        public void onItemClick(AdapterView<?> parent, View view, int position,long id) { 
 		        		ViewGroup row = (ViewGroup) listView.getChildAt(position);
@@ -86,6 +91,12 @@ public class Select_Producto_Venta extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		 switch (item.getItemId()) {
+		 	case android.R.id.home:
+		 		Intent intentHome = new Intent(Select_Producto_Venta.this,Select_Cliente_Venta.class);
+		 		intentHome.putExtra("idvendedor", ""+idvendedor);
+		 		intentHome.putExtra("idruta", ""+idruta);
+		 		startActivity(intentHome);
+		 	return true;
 	        case MENU1:
 	        	boolean hayCompra = false;
 	        	double subtotal = 0;

@@ -1084,10 +1084,17 @@ containing a value of this type.
         public static final int client_16x16=0x7f020057;
         public static final int client_20x20=0x7f020058;
         public static final int client_24x24=0x7f020059;
-        public static final int ic_launcher=0x7f02005a;
+        public static final int client_32x32=0x7f02005a;
+        public static final int ic_launcher=0x7f02005b;
+        public static final int product_32x32=0x7f02005c;
+        public static final int rute_128x128=0x7f02005d;
+        public static final int rute_32x32=0x7f02005e;
+        public static final int vendedor_32x32=0x7f02005f;
+        public static final int ventas_32x32=0x7f020060;
+        public static final int veta_32x32=0x7f020061;
     }
     public static final class id {
-        public static final int CheckBox01=0x7f050059;
+        public static final int CheckBox01=0x7f05005b;
         public static final int action_bar=0x7f05001c;
         public static final int action_bar_activity_content=0x7f050015;
         public static final int action_bar_container=0x7f05001b;
@@ -1099,7 +1106,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f05005b;
+        public static final int action_settings=0x7f05005d;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
@@ -1127,6 +1134,7 @@ containing a value of this type.
         public static final int icon=0x7f05002a;
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
+        public static final int imageView=0x7f050058;
         public static final int listMode=0x7f050001;
         public static final int listView1=0x7f05003c;
         public static final int list_item=0x7f050029;
@@ -1137,8 +1145,8 @@ containing a value of this type.
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
-        public static final int rowTextView=0x7f050058;
-        public static final int rowTextView2=0x7f05005a;
+        public static final int rowTextView=0x7f05005a;
+        public static final int rowTextView2=0x7f05005c;
         public static final int scrollView1=0x7f05003d;
         public static final int scrollView2=0x7f05004e;
         public static final int search_badge=0x7f050032;
@@ -1158,6 +1166,7 @@ containing a value of this type.
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
+        public static final int textView=0x7f050059;
         public static final int textView1=0x7f05004a;
         public static final int textView10=0x7f050051;
         public static final int textView11=0x7f050052;
@@ -1259,9 +1268,10 @@ containing a value of this type.
         public static final int activity_update__vendedores=0x7f030032;
         public static final int activity_vendedores=0x7f030033;
         public static final int activity_ventas=0x7f030034;
-        public static final int simplerow=0x7f030035;
-        public static final int support_simple_spinner_dropdown_item=0x7f030036;
-        public static final int two_columns=0x7f030037;
+        public static final int listview_menu=0x7f030035;
+        public static final int simplerow=0x7f030036;
+        public static final int support_simple_spinner_dropdown_item=0x7f030037;
+        public static final int two_columns=0x7f030038;
     }
     public static final class menu {
         public static final int agregar__ruta__cliente=0x7f0c0000;

@@ -4,6 +4,7 @@ import com.example.entidades.Producto;
 import com.example.sql.SQLiteQuery;
 
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -53,6 +54,10 @@ public class Detalle_Producto extends Activity {
 			txtCantidad.setText(""+p.getCantidad());
 			txtProducto.setText(p.getProducto());
 			
+			 ActionBar actionBar = getActionBar();
+ 	        actionBar.setDisplayHomeAsUpEnabled(true);
+ 	        actionBar.setHomeButtonEnabled(true);
+			
 	}
 
 	@Override
@@ -69,8 +74,13 @@ public class Detalle_Producto extends Activity {
 	@Override
     public boolean onOptionsItemSelected(MenuItem item) {
 		 switch (item.getItemId()) {
+		 case android.R.id.home:
+		 		Intent intentHome = new Intent(Detalle_Producto.this,MainActivity_Productos.class);
+		 		startActivity(intentHome);
+		 		return true;
 	        case MENU1:
 	        	Intent intent = new Intent(Detalle_Producto.this,Update_Producto.class);
+	        	intent.putExtra("activity", "Detalle_Producto");
 	        	intent.putExtra("idproducto",""+idproducto);
 	    		startActivity(intent);   
 	            return true;

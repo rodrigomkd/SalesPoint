@@ -8,10 +8,10 @@ import com.example.entidades.Producto;
 import com.example.metodos.ListArrayAdapterCantidad;
 import com.example.sql.SQLiteQuery;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -49,7 +49,6 @@ public class Productos_Detalle_Venta extends Activity {
 		  }
 		  List<Producto> productos = new ArrayList<Producto>();
 		  for(Detalleventa dv : dventas){
-	        	Log.i("idventa", ""+dv.getIdventa());
 			  ids.add(dv.getIddetalleventa());
 			  Producto p = sql.getProductoPorId(dv.getIdproducto());
 			  productos.add(p);
@@ -67,6 +66,10 @@ public class Productos_Detalle_Venta extends Activity {
 			        		startActivity(intent);   		
 			        }
 			    });
+			 
+			 ActionBar actionBar = getActionBar();
+	 	        actionBar.setDisplayHomeAsUpEnabled(true);
+	 	        actionBar.setHomeButtonEnabled(true);
 		  
 	}
 
@@ -82,6 +85,12 @@ public class Productos_Detalle_Venta extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		 switch (item.getItemId()) {
+		 case android.R.id.home:
+		 		Intent intentVentas = new Intent(Productos_Detalle_Venta.this,Detalle_Venta.class);          
+		 		intentVentas.putExtra("idvendedor",""+idvendedor);
+		 		intentVentas.putExtra("idventa",""+idventa);
+		 		startActivity(intentVentas);
+		 	return true;
 	        case MENU1:
 	        	Intent intent = new Intent(Productos_Detalle_Venta.this,Mis_Ventas.class);
 	        	intent.putExtra("idvendedor",""+idvendedor);

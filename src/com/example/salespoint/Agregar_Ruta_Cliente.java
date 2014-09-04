@@ -8,6 +8,7 @@ import com.example.entidades.Ruta;
 import com.example.metodos.ListArrayAdapter;
 import com.example.sql.SQLiteQuery;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -49,6 +50,9 @@ public class Agregar_Ruta_Cliente extends Activity {
 				
 				 ArrayAdapter<String> adapter = new ListArrayAdapter(this,items);
 				 listView.setAdapter(adapter);
+				 ActionBar actionBar = getActionBar();
+			        actionBar.setDisplayHomeAsUpEnabled(true);
+			        actionBar.setHomeButtonEnabled(true);
 			}
 	}
 
@@ -62,6 +66,11 @@ public class Agregar_Ruta_Cliente extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		 switch (item.getItemId()) {
+		 case android.R.id.home:
+		 		Intent intentHome = new Intent(Agregar_Ruta_Cliente.this,Rutas_Cliente.class);
+		 		intentHome.putExtra("idcliente", ""+idcliente);
+		 		startActivity(intentHome);
+		 		return true;
 	        case MENU1:
 	        	if(!hayDatos){
 	        		Toast.makeText(this, "No existen rutas.", Toast.LENGTH_LONG).show();  

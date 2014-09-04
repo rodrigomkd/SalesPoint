@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import com.example.entidades.Ruta;
 import com.example.sql.SQLiteQuery;
+
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -46,10 +48,12 @@ public class Select_Ruta_Venta extends Activity {
 			  ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 					   android.R.layout.simple_list_item_1, items);
 		                listView.setAdapter(adapter);
-		                listView.setAdapter(adapter);
 		}
 
-		
+		ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+        
 		listView.setOnItemClickListener(new OnItemClickListener(){
 	        public void onItemClick(AdapterView<?> parent, View view, int position,long id) {   	
 	        		Intent intent = new Intent(Select_Ruta_Venta.this,Select_Cliente_Venta.class);
@@ -68,6 +72,14 @@ public class Select_Ruta_Venta extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		return super.onOptionsItemSelected(item);
+		 switch (item.getItemId()) {
+		 case android.R.id.home:
+		 		Intent intentHome = new Intent(Select_Ruta_Venta.this,Select_Vendedor_Venta.class);
+		 		startActivity(intentHome);
+		 		return true;
+		 default: 
+			 return super.onOptionsItemSelected(item);
+		 }
 	}
+	
 }

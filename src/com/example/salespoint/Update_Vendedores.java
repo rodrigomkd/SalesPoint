@@ -4,10 +4,12 @@ import com.example.entidades.Vendedor;
 import com.example.sql.SQLiteQuery;
 
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +24,7 @@ public class Update_Vendedores extends Activity {
 	private EditText txtEmail;
 	private EditText txtRfc;
 	private int idvendedor;
+	private String activity;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class Update_Vendedores extends Activity {
 		txtRfc = (EditText) findViewById(R.id.editText7);
 		Bundle reicieveParams = getIntent().getExtras();
 		idvendedor = Integer.parseInt(reicieveParams.getString("idvendedor").trim());
+		activity = reicieveParams.getString("activity");
 		 if(idvendedor != 0){
 			 SQLiteQuery sql = new SQLiteQuery(this);
 			 Vendedor v = sql.getVendedorPorId(idvendedor);
@@ -50,13 +54,33 @@ public class Update_Vendedores extends Activity {
 				txtEmail.setText(v.getEmail());
 				txtRfc.setText(v.getRfc());
 		 }
+		 
+		 	ActionBar actionBar = getActionBar();
+	        actionBar.setDisplayHomeAsUpEnabled(true);
+	        actionBar.setHomeButtonEnabled(true);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-	//	getMenuInflater().inflate(R.menu.update__vendedores, menu);
 		return true;
+	}
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+		 switch (item.getItemId()) {
+		 case android.R.id.home:
+			Intent intentHome;
+			try {
+				intentHome = new Intent(Update_Vendedores.this, Class.forName("com.example.salespoint."+activity));
+				intentHome.putExtra("idvendedor", ""+idvendedor);
+		 		startActivity(intentHome);
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}	 		
+		 		return true;
+		 default:
+	        	 return super.onOptionsItemSelected(item);
+		 }
 	}
 	
 	public void onClickButton(View view){

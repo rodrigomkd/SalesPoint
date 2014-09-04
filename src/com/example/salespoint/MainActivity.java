@@ -2,6 +2,11 @@ package com.example.salespoint;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+
+import com.example.metodos.ListArrayAdapterMenu;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -20,13 +25,24 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
               
-        ListView list = (ListView) findViewById(R.id.listView1);
-        String[] items = { "Clientes", "Productos", "Rutas", "Vendedores","Ventas",
-        "Realizar venta" };
+        listView = (ListView) findViewById(R.id.listView1);
+        List<String> items = new ArrayList<String>();
+        items.add("Clientes");
+        items.add("Productos");
+        items.add("Rutas");
+        items.add("Vendedores");
+        items.add("Ventas");
+        items.add("Realizar venta");
+        
+        /*
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
         android.R.layout.simple_list_item_1, items);
         list.setAdapter(adapter);
         listView = list;
+        */
+        
+        ArrayAdapter<String> adapter = new ListArrayAdapterMenu(this,items);
+		 listView.setAdapter(adapter);
         
         listView.setOnItemClickListener(new OnItemClickListener(){
 	        public void onItemClick(AdapterView<?> parent, View view, int position,long id) {   	

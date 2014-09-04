@@ -6,7 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_main_activity__clientes">Clientes</string>
     <string name="title_activity_alta_cliente">Cliente</string>
-    <string name="title_activity_detalle_cliente">Cliente Detalle</string>
+    <string name="title_activity_detalle_cliente">Detalle Cliente</string>
     <string name="title_activity_main_activity__productos">Productos</string>
     <string name="title_activity_update__producto">Producto</string>
     <string name="title_activity_detalle__producto">Producto Detalle </string>
@@ -18,7 +18,7 @@
     <string name="title_activity_detalle__vendedor">Vendedor Detalle</string>
     <string name="title_activity_seleccionar__ruta">Rutas Vendedor</string>
     <string name="title_activity_agregar__ruta__vendedor">Agregar Rutas</string>
-    <string name="title_activity_rutas__cliente">Rutas_Cliente</string>
+    <string name="title_activity_rutas__cliente">Rutas - Cliente</string>
     <string name="title_activity_agregar__ruta__cliente">Agregar Ruta</string>
     <string name="title_activity_select__vendedor__venta">Seleccionar Vendedor</string>
     <string name="title_activity_select__ruta__venta">Seleccionar Ruta</string>

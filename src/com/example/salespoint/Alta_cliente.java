@@ -4,10 +4,12 @@ package com.example.salespoint;
 import com.example.entidades.cliente;
 import com.example.sql.SQLiteQuery;
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +24,7 @@ public class Alta_cliente extends Activity {
 	private EditText txtCelular;
 	private EditText txtEmail;
 	private int idcliente;
+	private String activity;
 	
 	 
 	@Override
@@ -40,6 +43,8 @@ public class Alta_cliente extends Activity {
 		txtEmail = (EditText) findViewById(R.id.editText1);
 		Bundle reicieveParams = getIntent().getExtras();
 		 idcliente = Integer.parseInt(reicieveParams.getString("idcliente").trim());
+		 activity = reicieveParams.getString("activity");
+		 
 		 if(idcliente != 0){
 			 SQLiteQuery sql = new SQLiteQuery(this);
 			 cliente c = sql.consultaClientesPorId(idcliente);
@@ -51,6 +56,9 @@ public class Alta_cliente extends Activity {
 				txtCelular.setText(c.getCelular());
 				txtEmail.setText(c.getEmail());			 
 		 }
+		 ActionBar actionBar = getActionBar();
+	        actionBar.setDisplayHomeAsUpEnabled(true);
+	        actionBar.setHomeButtonEnabled(true);
 	}
 
 	@Override
@@ -58,6 +66,23 @@ public class Alta_cliente extends Activity {
 		return true;
 	}
 	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		 switch (item.getItemId()) {
+		 case android.R.id.home:		
+			Intent intentHome;
+			try {
+				intentHome = new Intent(Alta_cliente.this,Class.forName("com.example.salespoint."+activity));
+				intentHome.putExtra("idcliente",""+idcliente);
+		 		startActivity(intentHome);		
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		 		return true;
+		 default:
+			 return super.onOptionsItemSelected(item);
+		 }
+	}
 	public void onClickButton(View view){
 		Intent intent = new Intent(Alta_cliente.this,MainActivity_Clientes.class);
 		startActivity(intent);   		

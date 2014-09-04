@@ -90,6 +90,7 @@ public class MainActivity_Clientes extends Activity {
 	        case MENU1:
 	        	Intent intent = new Intent(MainActivity_Clientes.this,Alta_cliente.class);
 	        	intent.putExtra("idcliente","0");
+	        	intent.putExtra("activity", "MainActivity_Clientes");
 	    		startActivity(intent);   
 	            return true;
 	        case MENU2:

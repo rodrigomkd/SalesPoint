@@ -7,6 +7,7 @@ import com.example.entidades.Ruta;
 import com.example.metodos.ListArrayAdapter;
 import com.example.sql.SQLiteQuery;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class Rutas_Cliente extends Activity {
 	private final int  MENU1 = 1;
 	private final int MENU2 = 2;
 	private final int MENU3 = 3;
+	private boolean hayRutas = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,15 +50,22 @@ public class Rutas_Cliente extends Activity {
 
 				ArrayAdapter<String> adapter = new ListArrayAdapter(this,items);
 				listView.setAdapter(adapter);
+				hayRutas = true;
 			}
+			ActionBar actionBar = getActionBar();
+	        actionBar.setDisplayHomeAsUpEnabled(true);
+	        actionBar.setHomeButtonEnabled(true);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuItem menu1 = menu.add(Menu.NONE, MENU1, 3, "Agregar Rutas");
         menu1.setAlphabeticShortcut('a');
-        MenuItem menu2 = menu.add(Menu.NONE, MENU2, 3, "Eliminar Rutas");
-        menu2.setAlphabeticShortcut('e');
+        if(hayRutas){
+        	 MenuItem menu2 = menu.add(Menu.NONE, MENU2, 3, "Eliminar Rutas");
+             menu2.setAlphabeticShortcut('e');
+        }
+     
         MenuItem menu3 = menu.add(Menu.NONE, MENU3, 3, "Clientes");
         menu3.setAlphabeticShortcut('e');
 		return true;
@@ -65,6 +74,11 @@ public class Rutas_Cliente extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		 switch (item.getItemId()) {
+		 case android.R.id.home:
+		 		Intent intentHome = new Intent(Rutas_Cliente.this,Detalle_cliente.class);
+		 		intentHome.putExtra("idcliente",""+idcliente);
+		 		startActivity(intentHome);
+		 		return true;
 	        case MENU1:
 	        	Intent intent = new Intent(Rutas_Cliente.this,Agregar_Ruta_Cliente.class);
 	        	intent.putExtra("idcliente",""+idcliente);
